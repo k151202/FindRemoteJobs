@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+	<link rel="stylesheet" href="{{url_for('static', filename='css/jobs.css')}}">
+	<title>Find Remote Jobs</title>
+</head>
+
+<body>
+	<header>
+		<div>
+			<h1>results</h1>
+		</div>
+		<div>
+			<h3>{{numResult}} {{word}} jobs found.</h3>
+		</div>
+		<div>
+			<button class="btn btn-default btn-ghost" onclick="location.href='/export?word={{word}}'">export to csv</button>
+    </div>
+    <div class="go-back">
+      <a href="/">&#8678; go back</a>
+    </div>
+  </header>
+  <main>
+    <hr>
+    {% for item in jobs %}
+    <div class="jobs">
+      <div>
+        <h3>{{item.title}}</h3>
+      </div>
+      <div>
+        <h4>{{item.company}}</h4>
+        <a href="{{item.link}}" target="_blank">apply</a>
+      </div>  
+      <hr>
+    </div>
+    {% endfor %}
+  </main>
+</body>
+</html>
